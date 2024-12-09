@@ -1,3 +1,3 @@
 FROM nginx:latest
 
-ENTRYPOINT ["top", "-b"]
+COPY webpage /usr/share/nginx/html
