@@ -1,3 +1,4 @@
 FROM nginx:latest
 
-COPY webpage /usr/share/nginx/html
+COPY nginx.conf /etc/nginx
+COPY start-bootstrap /web/start-bootstrap
