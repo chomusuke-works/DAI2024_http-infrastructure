@@ -1,5 +1,5 @@
 FROM nginx:latest
 
 COPY nginx.conf /etc/nginx
-COPY webpage /web/start-bootstrap
-COPY website2 /web/free-css
+COPY start-bootstrap /web/start-bootstrap
+COPY free-css /web/free-css
