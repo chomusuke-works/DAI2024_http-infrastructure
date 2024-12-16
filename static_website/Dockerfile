@@ -1,3 +1,5 @@
 FROM nginx:latest
 
-COPY webpage /usr/share/nginx/html
+COPY nginx.conf /etc/nginx
+COPY webpage /web/start-bootstrap
+COPY website2 /web/free-css
