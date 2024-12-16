@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  http_infra:
+    build:
+      context: static_website/.
+      dockerfile: Dockerfile
+    ports:
+      - "25565:565"
+      - "25656:656"
