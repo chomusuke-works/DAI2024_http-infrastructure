@@ -3,7 +3,7 @@ version: '3.9'
 services:
   http_infra:
     build:
-      context: static_website/.
+      context: static_website/.  # Set directory of Dockerfile
       dockerfile: Dockerfile
     ports:
       - "25565:565"
