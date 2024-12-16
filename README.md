@@ -3,10 +3,10 @@
 Step 1: Static Web site
 -----------------------
 
-The server is configured to listen for requests on port 25565.
-The website's root is located at /web/start-bootstrap.
+The web server is configured to listen for requests on port 25565.
+The website's root is located at `/web/start-bootstrap`.
 
-This organization allows to add new websites in the /web directory down the line.
+This allows to add new websites in the `/web` directory down the line.
 
 Step 2: Docker compose
 ----------------------
