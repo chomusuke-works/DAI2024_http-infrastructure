@@ -6,5 +6,4 @@ services:
       context: static_website/.  # Set directory of Dockerfile
       dockerfile: Dockerfile
     ports:
-      - "25565:565"
-      - "25656:656"
+      - "565:25565"
