@@ -4,7 +4,7 @@ services:
   http_infra:
     image: nginx
     ports:
-      - "8080:25565"
+      - "8080:80"
     volumes:
       - ./start-bootstrap:/web/start-bootstrap
       - ./nginx.conf:/etc/nginx/nginx.conf
