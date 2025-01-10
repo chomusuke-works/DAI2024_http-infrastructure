@@ -55,4 +55,10 @@ public class ZooApi {
             ctx.status(404).result("Animal not found");
         }
     }
+
+    // Delete Animal
+    public void clearZoo(Context ctx) {
+        animals.clear();
+        ctx.status(204); // No content, successfully deleted
+    }
 }
