@@ -1,0 +1,31 @@
+meta {
+  name: INSERT Rexy
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:7000/animals
+  body: json
+  auth: none
+}
+
+headers {
+  content-type: application/json
+}
+
+body:json {
+  {
+    "name" : "Rexy",
+    "species" : "T-Rex",
+    "age" : 31
+  }
+}
+
+tests {
+  test("should be able to login", function() {
+    const data = res.getBody();
+    expect(res.getStatus()).to.equal(201);
+  });
+  
+}
