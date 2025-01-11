@@ -1,13 +1,17 @@
 meta {
   name: CHANGE Rexy
   type: http
-  seq: 7
+  seq: 6
 }
 
 put {
-  url: http://localhost:7000/animals/3
+  url: http://localhost:7000/animals?name=Rexy
   body: json
   auth: none
+}
+
+params:query {
+  name: Rexy
 }
 
 headers {
@@ -16,6 +20,6 @@ headers {
 
 body:json {
   { 
-    "age" : 38
+    "birthDate" : 1967
   }
 }
