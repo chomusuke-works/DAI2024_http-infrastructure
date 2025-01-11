@@ -1,18 +1,11 @@
 package zoo;
 
 public class Animal {
-    private int id;
     private String name;
     private String species;
-    private int age;
+    private int birthDate;
 
     // Getters and Setters
-    public int getId() {
-        return id;
-    }
-
-    protected void setId(int id) { this.id = id; }
-
     public String getName() {
         return name;
     }
@@ -29,7 +22,9 @@ public class Animal {
         this.species = species;
     }
 
-    public int getAge() { return age; }
+    public int getBirthDate() { return birthDate; }
 
-    protected void setAge(int age) { this.age = age; }
+    protected void setBirthDate(int birthDate) { this.birthDate = birthDate; }
+
+    public String toString() { return name + " is a " + species + " born in " + birthDate; }
 }

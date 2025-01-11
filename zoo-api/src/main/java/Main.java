@@ -9,10 +9,8 @@ public class Main {
 
         // Routes
         app.post("/animals", zooApi::createAnimal);
-        app.get("/animals", zooApi::getAllAnimals);
-        app.get("/animals/{id}", zooApi::getAnimalById);
-        app.put("/animals/{id}", zooApi::updateAnimal);
-        app.delete("/animals/{id}", zooApi::deleteAnimal);
-        app.delete("/animals", zooApi::clearZoo);
+        app.get("/animals", zooApi::getAnimalByName);
+        app.put("/animals", zooApi::updateAnimal);
+        app.delete("/animals", zooApi::deleteAnimal);
     }
 }
