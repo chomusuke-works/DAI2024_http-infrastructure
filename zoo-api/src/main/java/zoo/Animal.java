@@ -10,11 +10,11 @@ public class Animal {
         return name;
     }
 
-    protected void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    protected String getSpecies() {
+    public String getSpecies() {
         return species;
     }
 
@@ -24,7 +24,7 @@ public class Animal {
 
     public int getBirthDate() { return birthDate; }
 
-    protected void setBirthDate(int birthDate) { this.birthDate = birthDate; }
+    public void setBirthDate(int birthDate) { this.birthDate = birthDate; }
 
-    public String toString() { return name + " is a " + species + " born in " + birthDate; }
+    public String toString() { return String.format("%s is a %s born in the year %d.", name, species, birthDate); }
 }
