@@ -1,0 +1,15 @@
+meta {
+  name: CHANGE Rexy
+  type: http
+  seq: 6
+}
+
+put {
+  url: http://localhost:25565/api/animals/Rexy?birthDate=1967
+  body: json
+  auth: none
+}
+
+params:query {
+  birthDate: 1967
+}

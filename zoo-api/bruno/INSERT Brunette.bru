@@ -5,13 +5,13 @@ meta {
 }
 
 post {
-  url: http://localhost:7000/animals
+  url: http://localhost:25565/api/animals
   body: json
   auth: none
 }
 
 headers {
-  content-type: application/json
+  content-type: application/api/json
 }
 
 body:json {
@@ -23,7 +23,7 @@ body:json {
 }
 
 tests {
-  test("should be able to login", function() {
+  test("Insert Brunette", function() {
     const data = res.getBody();
     expect(res.getStatus()).to.equal(201);
   });

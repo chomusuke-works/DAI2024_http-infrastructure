@@ -1,11 +1,11 @@
 meta {
-  name: INSERT Bruno
+  name: INSERT Rexy
   type: http
-  seq: 1
+  seq: 3
 }
 
 post {
-  url: http://localhost:7000/animals
+  url: http://localhost:25565/api/animals
   body: json
   auth: none
 }
@@ -16,14 +16,14 @@ headers {
 
 body:json {
   {
-    "name" : "Bruno",
-    "species" : "Wolf",
-    "birthDate" : 2017
+    "name" : "Rexy",
+    "species" : "T-Rex",
+    "birthDate" : 1978
   }
 }
 
 tests {
-  test("should be able to login", function() {
+  test("Insert Rexy", function() {
     const data = res.getBody();
     expect(res.getStatus()).to.equal(201);
   });
