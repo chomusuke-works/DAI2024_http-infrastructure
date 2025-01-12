@@ -29,7 +29,9 @@ Step 3: HTTP API server
 Step 4: Reverse proxy with Traefik
 ----------------------------------
 
-Traefik will be used as a reverse proxy for our infrastructure. 
+Traefik will be used as a reverse proxy for our infrastructure.
+
+It is configured through the `docker-compose.yml` file using labels.
 
 Step 5: Scalability and load balancing
 --------------------------------------
