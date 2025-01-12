@@ -4,7 +4,7 @@ services:
       context: static_website/.  # Set directory of Dockerfile
       dockerfile: Dockerfile
     expose:
-      - "80"
+      - "565"
     labels:
       - "traefik.http.routers.start-bootstrap.rule=Host(`localhost`)"
 

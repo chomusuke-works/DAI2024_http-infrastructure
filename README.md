@@ -3,7 +3,7 @@
 Step 1: Static Web site
 -----------------------
 
-The web server is configured to listen for requests on port 80.
+The web server is configured to listen for requests on port 565.
 The website's root is located in the `/web/start-bootstrap` directory.
 
 This structure allows to add new websites in the `/web` directory down the line.
@@ -17,11 +17,8 @@ The static web server defined at the step 1 can be spun up using docker compose.
 
 The Docker architecture consists of a Dockerfile that allows the administrator to
 build an image containing the configuration as well as the contents of the website.
-The docker-compose.yml file then uses this dockerfile to integrate it in a scalable
+The `docker-compose.yml` file then uses this dockerfile to integrate it in a scalable
 infrastructure.
-
-The website is mapped to the port 565 on the host machine. This can be modified by 
-editing docker-compose.yml.
 
 Step 3: HTTP API server
 -----------------------
