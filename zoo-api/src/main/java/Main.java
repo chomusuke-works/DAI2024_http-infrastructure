@@ -7,13 +7,14 @@ public class Main {
     public static void main(String[] args) {
         Javalin app = Javalin.create(); // Start the server on port 7000
 
-        ZooApi zooApi = new ZooApi(); // Instance of ZooApi
+        AnimalController animals = new AnimalController(); // Instance of ZooApi
 
         // Routes
-        app.post("/animals", zooApi::createAnimal);
-        app.get("/animals", zooApi::getAnimalByName);
-        app.put("/animals", zooApi::updateAnimal);
-        app.delete("/animals", zooApi::deleteAnimal);
+        app.post("/api/animals", animals::create);
+        app.get("/api/animals/{name}", animals::getOne);
+        app.get("/api/animals", animals::getAll);
+        app.put("/api/animals/{name}", animals::update);
+        app.delete("/api/animals/{name}", animals::deleteOne);
 
         app.start(PORT);
     }
