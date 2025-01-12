@@ -4,9 +4,11 @@ Step 1: Static Web site
 -----------------------
 
 The web server is configured to listen for requests on port 80.
-The website's root is located at `/web/start-bootstrap`.
+The website's root is located in the `/web/start-bootstrap` directory.
 
-This allows to add new websites in the `/web` directory down the line.
+This structure allows to add new websites in the `/web` directory down the line.
+
+`start-bootstrap.conf` replaces nginx's `default.conf` file in order to specify the website's location.
 
 Step 2: Docker compose
 ----------------------
@@ -27,7 +29,7 @@ Step 3: HTTP API server
 Step 4: Reverse proxy with Traefik
 ----------------------------------
 
-
+Traefik will be used as a reverse proxy for our infrastructure. 
 
 Step 5: Scalability and load balancing
 --------------------------------------
