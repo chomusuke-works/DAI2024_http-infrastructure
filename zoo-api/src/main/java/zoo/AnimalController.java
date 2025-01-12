@@ -6,10 +6,10 @@ import io.javalin.http.HttpStatus;
 import java.util.*;
 
 public class AnimalController {
-
-    private static final Map<String, Animal> animals = new HashMap<>();
     private static final String ALREADY_EXISTS = "There's already an animal with that name.";
     private static final String EMPTY_NAME = "Animal name must be specified.";
+
+    private final Map<String, Animal> animals = new HashMap<>();
 
     public void create(Context ctx) {
         Animal animal = ctx.bodyAsClass(Animal.class);
@@ -57,27 +57,27 @@ public class AnimalController {
             return;
         }
 
-        // Create new animal with provided fields and keep old fields for unprovided ones
-        Animal updatedAnimal = ctx.bodyAsClass(Animal.class);
-        if (updatedAnimal.getName() == null) {
-            updatedAnimal.setName(name);
-        } else if (animals.containsKey(updatedAnimal.getName())) {
-            ctx.status(HttpStatus.CONFLICT).result(ALREADY_EXISTS);
+        String species = ctx.queryParam("species");
+        String birthYearString = ctx.queryParam("birthYear");
+        Integer newBirthYear = null;
+        try {
+            if (birthYearString != null)
+                newBirthYear = Integer.parseInt(birthYearString);
+        } catch (NumberFormatException e) {
+            ctx.status(HttpStatus.BAD_REQUEST)
+                .result("Birth year must be an integer.");
 
             return;
         }
 
-        if (updatedAnimal.getSpecies() == null) {
-            updatedAnimal.setSpecies(animal.getSpecies());
+        if (species != null) {
+            animal.setSpecies(species);
+        }
+        if (newBirthYear != null) {
+            animal.setBirthYear(newBirthYear);
         }
 
-        if (updatedAnimal.getBirthDate() == 0) {
-            updatedAnimal.setBirthDate(animal.getBirthDate());
-        }
-
-        animals.put(name, updatedAnimal);
-        ctx.status(HttpStatus.CREATED)
-            .json(updatedAnimal);
+        ctx.status(HttpStatus.OK);
     }
 
     // Delete Animal
