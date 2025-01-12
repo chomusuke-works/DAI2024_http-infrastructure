@@ -1,9 +1,23 @@
-version: '3.9'
-
 services:
-  http_infra:
+  start-bootstrap:
     build:
       context: static_website/.  # Set directory of Dockerfile
       dockerfile: Dockerfile
+    expose:
+      - "565"
+    labels:
+      - "traefik.http.routers.start-bootstrap.rule=Host(`localhost`)"
+
+  reverse-proxy:
+    # The official v3 Traefik docker image
+    image: traefik
+    # Enables the web UI and tells Traefik to listen to docker
+    command: --api.insecure=true --providers.docker
     ports:
-      - "565:25565"
+      # The HTTP port
+      - "80:80"
+      # The Web UI (enabled by --api.insecure=true)
+      - "8080:8080"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock

@@ -1,4 +1,4 @@
 FROM nginx:latest
 
-COPY nginx.conf /etc/nginx
+COPY start-bootstrap.conf /etc/nginx/conf.d/default.conf
 COPY start-bootstrap /web/start-bootstrap
