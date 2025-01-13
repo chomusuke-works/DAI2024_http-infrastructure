@@ -18,12 +18,14 @@ services:
       - "25565"
     labels:
       - "traefik.http.routers.zoo-api.rule=Host(`localhost`) && PathPrefix(`/api`)"
+      - "traefik.http.services.zoo-api.loadBalancer.sticky.cookie=true"
+      - "traefik.http.services.zoo-api.loadBalancer.sticky.cookie.name=zoo_api_serv"
 
   reverse-proxy:
     # The official v3 Traefik docker image
     image: traefik
     # Enables the web UI and tells Traefik to listen to docker
-    command: --api.insecure=true --providers.docker
+    command: --api.insecure=true --providers.docker --accesslog
     ports:
       # The HTTP port
       - "80:80"
