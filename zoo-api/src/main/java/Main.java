@@ -14,7 +14,7 @@ public class Main {
         app.get("/api/animals/{name}", animals::getOne);
         app.get("/api/animals", animals::getAll);
         app.put("/api/animals/{name}", animals::update);
-        app.delete("/api/animals/{name}", animals::deleteOne);
+        app.delete("/api/animals", animals::deleteOne);
 
         app.start(PORT);
     }

@@ -5,7 +5,11 @@ meta {
 }
 
 delete {
-  url: http://localhost/api/animals/Brunette
+  url: http://localhost/api/animals?name=Brunette
   body: none
   auth: none
+}
+
+params:query {
+  name: Brunette
 }
