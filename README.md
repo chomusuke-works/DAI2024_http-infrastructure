@@ -52,6 +52,12 @@ The zoo API manages its own endpoints past the localhost/api point, as defined i
 Step 5: Scalability and load balancing
 --------------------------------------
 
+To start the infrastructure with multiple instances of the static web server, use the command
+`docker compose up -d --scale start-bootstrap=<n>`, `n` being the number of instances wanted.
+
+To scale the infrastructure up or down while it is running, use the command 
+`docker compose scale start-bootstrap=<n>`.
+
 Step 6: Load balancing with round-robin and sticky sessions
 -----------------------------------------------------------
 
