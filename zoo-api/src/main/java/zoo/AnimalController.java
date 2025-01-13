@@ -14,17 +14,17 @@ public class AnimalController {
     public void create(Context ctx) {
         Animal animal = ctx.bodyAsClass(Animal.class);
 
-        if (animal.getName().isEmpty()) {
+        if (animal.name.isEmpty()) {
             ctx.status(HttpStatus.BAD_REQUEST).result(EMPTY_NAME);
 
             return;
-        } else if (animals.containsKey(animal.getName())) {
+        } else if (animals.containsKey(animal.name)) {
             ctx.status(HttpStatus.CONFLICT).result(ALREADY_EXISTS);
 
             return;
         }
 
-        animals.put(animal.getName(), animal);
+        animals.put(animal.name, animal);
 
         ctx.status(HttpStatus.CREATED);
     }
@@ -71,10 +71,10 @@ public class AnimalController {
         }
 
         if (species != null) {
-            animal.setSpecies(species);
+            animal.species = species;
         }
         if (newBirthYear != null) {
-            animal.setBirthYear(newBirthYear);
+            animal.birthYear = newBirthYear;
         }
 
         ctx.status(HttpStatus.OK);
