@@ -1,0 +1,31 @@
+meta {
+  name: INSERT Rexy
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost/api/animals
+  body: json
+  auth: none
+}
+
+headers {
+  content-type: application/json
+}
+
+body:json {
+  {
+    "name" : "Rexy",
+    "species" : "T-Rex",
+    "birthYear" : 1978
+  }
+}
+
+tests {
+  test("Insert Rexy", function() {
+    const data = res.getBody();
+    expect(res.getStatus()).to.equal(201);
+  });
+  
+}
