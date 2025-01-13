@@ -52,6 +52,8 @@ The zoo API manages its own endpoints past the localhost/api point, as defined i
 Step 5: Scalability and load balancing
 --------------------------------------
 
+The static website uses a round-robin style load balancing.
+
 To start the infrastructure with multiple instances of the static web server, use the command
 `docker compose up -d --scale start-bootstrap=<n>`, `n` being the number of instances wanted.
 
@@ -60,6 +62,13 @@ To scale the infrastructure up or down while it is running, use the command
 
 Step 6: Load balancing with round-robin and sticky sessions
 -----------------------------------------------------------
+
+The zoo API can be scaled up in a similar way, by adding `--scale zoo-api=<n>`. It uses a sticky session style 
+load balancing.
+
+To verify if the load balancing works, we enabled access logs in the traefik service. Then, we made various requests
+to the API and checked the logs to see where the calls were routed. By removing the `zoo_api_serv` cookie, we were able
+to reset the sticky session and connect to a different server.
 
 Step 7: Securing Traefik with HTTPS
 -----------------------------------
