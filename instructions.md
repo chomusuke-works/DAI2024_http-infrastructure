@@ -105,13 +105,13 @@ Once you're finished with the implementation, create a Dockerfile for the API se
 
 ### Acceptance criteria
 
-- [ ] Your API supports all CRUD operations.
-- [ ] You are able to explain your implementation and walk us through the code.
-- [ ] You can start and stop the API server using docker compose.
-- [ ] You can access both the API and the static server from your browser.
-- [ ] You can rebuild the docker image with docker compose.
-- [ ] You can do demo where use an API testing tool to show that all CRUD operations work.
-- [ ] You have **documented** your implementation in your report.
+- [x] Your API supports all CRUD operations.
+- [x] You are able to explain your implementation and walk us through the code.
+- [x] You can start and stop the API server using docker compose.
+- [x] You can access both the API and the static server from your browser.
+- [x] You can rebuild the docker image with docker compose.
+- [x] You can do demo where use an API testing tool to show that all CRUD operations work.
+- [x] You have **documented** your implementation in your report.
 
 
 Step 4: Reverse proxy with Traefik
@@ -134,12 +134,12 @@ The steps to follow for this section are thus:
 
 ### Acceptance criteria
 
-- [ ] You can do a demo where you start from an "empty" Docker environment (no container running) and using docker compose you can start your infrastructure with 3 containers: static server, dynamic server and reverse proxy
-- [ ] In the demo you can access each server from the browser in the demo. You can prove that the routing is done correctly through the reverse proxy.
-- [ ] You are able to explain how you have implemented the solution and walk us through the configuration and the code.
-- [ ] You are able to explain why a reverse proxy is useful to improve the security of the infrastructure.
-- [ ] You are able to explain how to access the dashboard of Traefik and how it works.
-- [ ] You have **documented** your configuration in your report.
+- [x] You can do a demo where you start from an "empty" Docker environment (no container running) and using docker compose you can start your infrastructure with 3 containers: static server, dynamic server and reverse proxy
+- [x] In the demo you can access each server from the browser in the demo. You can prove that the routing is done correctly through the reverse proxy.
+- [x] You are able to explain how you have implemented the solution and walk us through the configuration and the code.
+- [x] You are able to explain why a reverse proxy is useful to improve the security of the infrastructure.
+- [x] You are able to explain how to access the dashboard of Traefik and how it works.
+- [x] You have **documented** your configuration in your report.
 
 
 Step 5: Scalability and load balancing
