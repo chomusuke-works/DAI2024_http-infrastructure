@@ -11,15 +11,15 @@ public class Main {
 			    cors.addRule(CorsPluginConfig.CorsRule::anyHost)
 		));
 
-        AnimalController animals = new AnimalController(); // Instance of ZooApi
+        AnimalController animals = new AnimalController();
 
         // Routes
-        app.after(ctx -> ctx.header("Access-Control-Allow-Origin", "*"));
         app.post("/api/animals", animals::create);
         app.get("/api/animals/{name}", animals::getOne);
         app.get("/api/animals", animals::getAll);
         app.put("/api/animals/{name}", animals::update);
         app.delete("/api/animals/{name}", animals::deleteOne);
+
         app.start(PORT);
     }
 }
