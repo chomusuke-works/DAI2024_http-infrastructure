@@ -1,19 +1,21 @@
 services:
   start-bootstrap:
     build:
-      context: static_website/.  # Set directory of Dockerfile
-      dockerfile: Dockerfile
+      context: static_website
+      tags:
+        - "start-bootstrap:latest"
     expose:
       - "80"
     labels:
       - "traefik.http.routers.start-bootstrap.rule=Host(`localhost`)"
     deploy:
-      replicas: 6
+      replicas: 4
 
   zoo-api:
     build:
-      context: zoo-api/.
-      dockerfile: Dockerfile
+      context: zoo-api
+      tags:
+        - "zoo-api:latest"
     expose:
       - "25565"
     labels:
