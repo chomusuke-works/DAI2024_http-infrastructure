@@ -8,8 +8,6 @@ services:
       - "80"
     labels:
       - "traefik.http.routers.start-bootstrap.rule=Host(`localhost`)"
-    deploy:
-      replicas: 4
 
   zoo-api:
     build:
