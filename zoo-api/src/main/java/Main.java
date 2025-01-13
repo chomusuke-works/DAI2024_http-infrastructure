@@ -1,13 +1,17 @@
 import io.javalin.Javalin;
+import io.javalin.plugin.bundled.CorsPluginConfig;
 import zoo.*;
 
 public class Main {
     private static final int PORT = 25565;
 
     public static void main(String[] args) {
-        Javalin app = Javalin.create(); // Start the server on port 7000
+        Javalin app = Javalin.create(config ->
+            config.bundledPlugins.enableCors(cors ->
+			    cors.addRule(CorsPluginConfig.CorsRule::anyHost)
+		));
 
-        AnimalController animals = new AnimalController(); // Instance of ZooApi
+        AnimalController animals = new AnimalController();
 
         // Routes
         app.post("/api/animals", animals::create);

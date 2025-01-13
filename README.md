@@ -80,3 +80,10 @@ Optional step 1: Management UI
 
 Optional step 2: Integration API - static Web site
 --------------------------------------------------
+
+The static web page makes a GET request to the zoo API to ask if there is an animal named Bruno.
+If that's the case, the web page replaces the default text "It's nice to meet you" with
+"The \<species> Bruno wants to meet you!".
+
+The name of the animal is actually retrieved from the json data, but since it's the same as the 
+one found in the query, it is trivial.
