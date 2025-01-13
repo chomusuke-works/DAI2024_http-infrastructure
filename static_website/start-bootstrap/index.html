@@ -14,8 +14,21 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="css/styles.css" rel="stylesheet" />
-	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous">
-		
+	<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+	<script>
+		const HTTP_NOT_FOUND = 404;
+		const apiURL = "http://localhost/api/animals/Bruno";
+		fetch(apiURL)
+			.then(response => {
+                	if (response.status === HTTP_NOT_FOUND) return null;
+                    else return response.json();
+				})
+			.then(data => {
+                if (data && data.name && data.species) {
+                    document.getElementById("variable-text").textContent = `The ${data.species} ${data.name} wants to meet you!`;
+				}
+			})
 	</script>
 </head>
 <body id="page-top">
@@ -42,7 +55,7 @@
 <header class="masthead">
 	<div class="container">
 		<div class="masthead-subheading">Welcome To Our Studio!</div>
-		<div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+		<div class="masthead-heading text-uppercase" id="variable-text">It's Nice To Meet You</div>
 		<a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
 	</div>
 </header>
