@@ -82,16 +82,13 @@ public class AnimalController {
 
     // Delete Animal
     public void deleteOne(Context ctx) {
-        try {
-            String name = Objects.requireNonNull(ctx.queryParam("name"));
-            Animal animal = animals.remove(name);
-            if (animal != null) {
-                ctx.status(HttpStatus.NO_CONTENT);
-            } else {
-                ctx.status(HttpStatus.NOT_FOUND);
-            }
-        } catch (NullPointerException e) {
-            ctx.status(HttpStatus.BAD_REQUEST);
+        String name = ctx.pathParam("name");
+        if (!animals.containsKey(name)) {
+            ctx.status(HttpStatus.NOT_FOUND);
+
+            return;
         }
+
+        animals.remove(name);
     }
 }
