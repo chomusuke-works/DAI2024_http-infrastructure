@@ -4,9 +4,18 @@ services:
       context: static_website/.  # Set directory of Dockerfile
       dockerfile: Dockerfile
     expose:
-      - "565"
+      - "80"
     labels:
       - "traefik.http.routers.start-bootstrap.rule=Host(`localhost`)"
+
+  zoo-api:
+    build:
+      context: zoo-api/.
+      dockerfile: Dockerfile
+    expose:
+      - "25565"
+    labels:
+      - "traefik.http.routers.zoo-api.rule=Host(`localhost`) && PathPrefix(`/api`)"
 
   reverse-proxy:
     # The official v3 Traefik docker image
