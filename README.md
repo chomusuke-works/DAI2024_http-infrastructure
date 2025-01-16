@@ -73,7 +73,12 @@ to reset the sticky session and connect to a different server.
 Step 7: Securing Traefik with HTTPS
 -----------------------------------
 
+Both the static and dynamic web services support http and https. 
 
+The server uses an auto-signed certificate stored in the `crypto` directory,
+which is mounted on the traefik container's file system at `/etc/traefik/certificates`.
+
+Traefik uses the default ports for both protocols, 80 and 443.
 
 Optional step 1: Management UI
 ------------------------------
