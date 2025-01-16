@@ -1,0 +1,31 @@
+meta {
+  name: INSERT Brunette
+  type: http
+  seq: 2
+}
+
+post {
+  url: https://localhost/api/animals
+  body: json
+  auth: none
+}
+
+headers {
+  content-type: application/api/json
+}
+
+body:json {
+  {
+    "name" : "Brunette",
+    "species" : "Wolf",
+    "birthYear" : 2018
+  }
+}
+
+tests {
+  test("Insert Brunette", function() {
+    const data = res.getBody();
+    expect(res.getStatus()).to.equal(201);
+  });
+  
+}

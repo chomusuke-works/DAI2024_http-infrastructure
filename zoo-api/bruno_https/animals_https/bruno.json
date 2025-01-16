@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "animals_https",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

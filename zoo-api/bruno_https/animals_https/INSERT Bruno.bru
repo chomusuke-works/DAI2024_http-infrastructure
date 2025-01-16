@@ -1,0 +1,31 @@
+meta {
+  name: INSERT Bruno
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://localhost/api/animals
+  body: json
+  auth: none
+}
+
+headers {
+  content-type: application/json
+}
+
+body:json {
+  {
+    "name" : "Bruno",
+    "species" : "Wolf",
+    "birthYear" : 2017
+  }
+}
+
+tests {
+  test("Insert Bruno", function() {
+    const data = res.getBody();
+    expect(res.getStatus()).to.equal(201);
+  });
+  
+}
