@@ -7,7 +7,12 @@ services:
     expose:
       - "80"
     labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.start-bootstrap.entrypoints=web"
       - "traefik.http.routers.start-bootstrap.rule=Host(`localhost`)"
+      - "traefik.http.routers.start-bootstrap_https.entrypoints=websecure"
+      - "traefik.http.routers.start-bootstrap_https.rule=Host(`localhost`)"
+      - "traefik.http.routers.start-bootstrap_https.tls=true"
 
   zoo-api:
     build:
@@ -17,20 +22,24 @@ services:
     expose:
       - "25565"
     labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.zoo-api.entrypoints=web"
       - "traefik.http.routers.zoo-api.rule=Host(`localhost`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.zoo-api_https.entrypoints=websecure"
+      - "traefik.http.routers.zoo-api_https.rule=Host(`localhost`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.zoo-api_https.tls=true"
       - "traefik.http.services.zoo-api.loadBalancer.sticky.cookie=true"
       - "traefik.http.services.zoo-api.loadBalancer.sticky.cookie.name=zoo_api_serv"
 
   reverse-proxy:
-    # The official v3 Traefik docker image
     image: traefik
     # Enables the web UI and tells Traefik to listen to docker
     command: --api.insecure=true --providers.docker --accesslog
     ports:
-      # The HTTP port
-      - "80:80"
-      # The Web UI (enabled by --api.insecure=true)
-      - "8080:8080"
+      - "80:80"      # HTTP
+      - "443:443"    # HTTPS
+      - "8080:8080"  # Web UI (enabled by --api.insecure=true)
     volumes:
-      # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./crypto:/etc/traefik/certificates  # Certificate and private key
+      - ./traefik.yml:/etc/traefik/traefik.yml  # Traefik config file
